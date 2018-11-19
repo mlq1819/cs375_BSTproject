@@ -4,11 +4,18 @@
 #include <fstream>
 #include <time.h>
 #include "BSTree.h"
+#include "Filereader.h"
 #ifndef DEBUG
 #define DEBUG true
 #endif
 
 using namespace std;
+
+clock_t max(clock_t a, clock_t b){
+	if(a>b)
+		return a;
+	return b;
+}
 
 void usage(char * arg0){
 	cout << "./" << arg0 << " <output file> <input file> [<input file>...]" << endl;
@@ -116,39 +123,54 @@ for(unsigned int i=0; i<nums.size(); i++)
 cout << "\n" << endl;
 #endif
 		BSTree BST = BSTree();
-		clock_t start_time, end_time;
-		unsigned long runtime;
+		clock_t start_time, end_time, one_time, max_diff;
+		unsigned long average;
 #if DEBUG
-cout << "Starting clock for insert..." << endl;
+cout << "Starting clock for Insert..." << endl;
 #endif
+		max_diff=0;
 		start_time=clock();				//Begin Timer Phase - Insert
-		for(unsigned int i=0; i<nums.size(); i++)
+		for(unsigned int i=0; i<nums.size(); i++){
+			one_time=clock();
 			BST.insert(nums[i]);
+			one_time=clock()-one_time;
+			max_diff=max(max_diff, one_time);
+		}
 		end_time=clock();				//End Timer Phase - Insert
-		runtime = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000);
-		ofp << argv[argno] << ": Insert: " << runtime << " milliseconds" << endl;
+		average = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000/nums.size());
+		ofp << argv[argno] << ": Insert\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
 #if DEBUG
-cout << "Ended clock for insert: " << runtime << " milliseconds for " << argv[argno] << endl;
-cout << "starting clock for find..." << endl;
+cout << "Ended clock for "<< argv[argno] << ": Insert\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
+cout << "starting clock for Search..." << endl;
 #endif
-		start_time=clock();
-		for(unsigned int i=0; i<nums.size(); i++)
+		max_diff=0;
+		start_time=clock();				//Begin Timer Phase - Search
+		for(unsigned int i=0; i<nums.size(); i++){
+			one_time=clock();
 			BST.find(nums[i]);
-		end_time=clock();
-		runtime = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000);
-		ofp << argv[argno] << ": Find: " << runtime << " milliseconds" << endl;
+			one_time=clock()-one_time;
+			max_diff=max(max_diff, one_time);
+		}
+		end_time=clock();				//End Timer Phase - Search
+		average = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000/nums.size());
+		ofp << argv[argno] << ": Search\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
 #if DEBUG
-cout << "Ended clock for find: " << runtime << " milliseconds for " << argv[argno] << endl;
-cout << "starting clock for delete..." << endl;
+cout << "Ended clock for "<< argv[argno] << ": Search\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
+cout << "starting clock for Delete..." << endl;
 #endif
-		start_time=clock();
-		for(unsigned int i=0; i<nums.size(); i++)
+		max_diff=0;
+		start_time=clock();				//Begin Timer Phase - Delete
+		for(unsigned int i=0; i<nums.size(); i++){
+			one_time=clock();
 			BST.remove(nums[i]);
-		end_time=clock();
-		runtime = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000);
-		ofp << argv[argno] << ": Delete: " << runtime << " milliseconds" << endl;
+			one_time=clock()-one_time;
+			max_diff=max(max_diff, one_time);
+		}
+		end_time=clock();				//End Timer Phase - Delete
+		average = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000/nums.size());
+		ofp << argv[argno] << ": Delete\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
 #if DEBUG
-cout << "Ended clock for delete: " << runtime << " milliseconds for " << argv[argno] << endl;
+cout << "Ended clock for "<< argv[argno] << ": Delete\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
 cout << "Finished with " << argv[argno] << "!" << endl;
 #endif
 	}
