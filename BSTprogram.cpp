@@ -137,10 +137,16 @@ cout << "Starting clock for Insert..." << endl;
 			max_diff=max(max_diff, one_time);
 		}
 		end_time=clock();				//End Timer Phase - Insert
-		average = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000/nums.size());
-		ofp << argv[argno] << ": Insert\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
+		average = (unsigned long) (((double)(end_time-start_time))*1000/CLOCKS_PER_SEC/nums.size());
+		ofp << argv[argno] << ": Insert" << endl;
+		ofp << "\tAverage: " << average << " milliseconds" << endl;
+		ofp << "\tWorst: " << max_diff << " milliseconds" << endl;
+		ofp << "\tTotal: " << end_time-start_time << " milliseconds" << endl;
 #if DEBUG
-cout << "Ended clock for "<< argv[argno] << ": Insert\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
+cout << argv[argno] << ": Insert" << endl;
+cout << "\tAverage: " << average << " milliseconds" << endl;
+cout << "\tWorst: " << max_diff << " milliseconds" << endl;
+cout << "\tTotal: " << end_time-start_time << " milliseconds" << endl;
 cout << "starting clock for Search..." << endl;
 #endif
 		max_diff=0;
@@ -152,10 +158,16 @@ cout << "starting clock for Search..." << endl;
 			max_diff=max(max_diff, one_time);
 		}
 		end_time=clock();				//End Timer Phase - Search
-		average = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000/nums.size());
-		ofp << argv[argno] << ": Search\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
+		average = (unsigned long) (((double)(end_time-start_time))*1000/CLOCKS_PER_SEC/nums.size());
+		ofp << argv[argno] << ": Search" << endl;
+		ofp << "\tAverage: " << average << " milliseconds" << endl;
+		ofp << "\tWorst: " << max_diff << " milliseconds" << endl;
+		ofp << "\tTotal: " << end_time-start_time << " milliseconds" << endl;
 #if DEBUG
-cout << "Ended clock for "<< argv[argno] << ": Search\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
+cout << argv[argno] << ": Search" << endl;
+cout << "\tAverage: " << average << " milliseconds" << endl;
+cout << "\tWorst: " << max_diff << " milliseconds" << endl;
+cout << "\tTotal: " << end_time-start_time << " milliseconds" << endl;
 cout << "starting clock for Delete..." << endl;
 #endif
 		max_diff=0;
@@ -167,10 +179,16 @@ cout << "starting clock for Delete..." << endl;
 			max_diff=max(max_diff, one_time);
 		}
 		end_time=clock();				//End Timer Phase - Delete
-		average = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000/nums.size());
-		ofp << argv[argno] << ": Delete\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
+		average = (unsigned long) (((double)(end_time-start_time))*1000/CLOCKS_PER_SEC/nums.size());
+		ofp << argv[argno] << ": Delete" << endl;
+		ofp << "\tAverage: " << average << " milliseconds" << endl;
+		ofp << "\tWorst: " << max_diff << " milliseconds" << endl;
+		ofp << "\tTotal: " << end_time-start_time << " milliseconds" << endl;
 #if DEBUG
-cout << "Ended clock for "<< argv[argno] << ": Delete\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
+cout << argv[argno] << ": Delete" << endl;
+cout << "\tAverage: " << average << " milliseconds" << endl;
+cout << "\tWorst: " << max_diff << " milliseconds" << endl;
+cout << "\tTotal: " << end_time-start_time << " milliseconds" << endl;
 cout << "Finished with " << argv[argno] << "!" << endl;
 #endif
 	}
