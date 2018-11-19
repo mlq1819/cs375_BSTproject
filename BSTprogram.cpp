@@ -84,12 +84,13 @@ cout << "\tLine " << reader.getIndex() << ":";
 		string input = reader.current();
 		sanatize(&input);
 		size_t idx = 0;
-		while(idx<input.size()){
-			nums.push_back(stoi(input.substr(idx, string::npos)), &idx, 10);
+		size_t index = 0;
+		while(index<input.size()){
+			nums.push_back(stoi(input.substr(index, string::npos), &idx, 10));
 #if DEBUG
 cout << " " << nums.back();
 #endif
-			idx++;
+			index+=idx;
 		}
 #if DEBUG
 cout << endl;
@@ -102,6 +103,7 @@ for(unsigned int i=0; i<nums.size(); i++)
 	cout << nums[i] << " ";
 cout << "\n" << endl;
 #endif
+	
 	
 	return 0;
 }
