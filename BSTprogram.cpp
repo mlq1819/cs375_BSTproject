@@ -74,16 +74,34 @@ cout << "Entered into main: " << argc << " arguments" << endl;
 	}
 	vector<int> nums = vector<int>();
 	reader.start();
+#if DEBUG
+cout << "Parsing File..." << endl;
+#endif
 	do{
+#if DEBUG
+cout << "\tLine " << reader.getIndex() << ":";
+#endif
 		string input = reader.current();
 		sanatize(&input);
 		size_t idx = 0;
 		while(idx<input.size()){
 			nums.push_back(stoi(input.substr(idx, string::npos)), &idx, 10);
+#if DEBUG
+cout << " " << nums.back();
+#endif
 			idx++;
 		}
+#if DEBUG
+cout << endl;
+#endif
 	} while (reader.next());
-	
+	nums.shrink_to_fit();
+#if DEBUG
+cout << "Completed parsing of file!" << endl;
+for(unsigned int i=0; i<nums.size(); i++)
+	cout << nums[i] << " ";
+cout << "\n" << endl;
+#endif
 	
 	return 0;
 }
