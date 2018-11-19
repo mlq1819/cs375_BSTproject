@@ -9,12 +9,40 @@
 
 using namespace std;
 
-void usage(){
-	
+void usage(char * arg0){
+	cout << "./" << arg0 << " <input file> <output file>" << endl;
 }
 
-char * sanatize(char * input){
-	
+void sanatize(string * str){
+	bool whitespace = true;
+	size_t idx = 0;
+	size_t index = 0;
+	while(index<str->length()){
+		char c = (*str)[index];
+		if(c==' '){
+			if(whitespace){
+				str->erase(index, 1);
+				continue;
+			}
+			whitespace=true;
+			index++;
+			continue;
+		}
+		if(c=='\t' || c=='\n'){
+			(*str)[index]=' ';
+			continue;
+		}
+		
+		
+		if(c<'0' || c>'9'){
+			(*str)[index]=' ';
+			continue;
+		}
+		idx=0;
+		stoi(str->substr(index, string::npos), &idx, 10);
+		index+=idx;
+	}
+	str->shrink_to_fit();
 }
 
 int main(int argc, char ** argv){
@@ -22,7 +50,7 @@ int main(int argc, char ** argv){
 cout << "Entered into main: " << argc << " arguments" << endl;
 #endif
 	if(argc<3){
-		usage();
+		usage(argv[0]);
 		return 0;
 	}
 	ifstream ifp;
@@ -45,6 +73,17 @@ cout << "Entered into main: " << argc << " arguments" << endl;
 		return 1;
 	}
 	vector<int> nums = vector<int>();
+	reader.start();
+	do{
+		string input = reader.current();
+		sanatize(&input);
+		size_t idx = 0;
+		while(idx<input.size()){
+			nums.push_back(stoi(input.substr(idx, string::npos)), &idx, 10);
+			idx++;
+		}
+	} while (reader.next());
+	
 	
 	return 0;
 }
