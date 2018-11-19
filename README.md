@@ -6,3 +6,7 @@ We will divide the algorithms between us while compile our code together through
 We will use C++ to create a BST object containing the algorithms required as well as a main function that can take in input files.
 
 During the week prior to November 30th we will test our algorithms together in order to evaluate our questions.
+
+Search: 
+Insert: 
+Delete: 
