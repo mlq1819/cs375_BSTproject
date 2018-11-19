@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <iostream>
+#include "BSTree.h"
 #ifndef DEBUG
 #define DEBUG true
 #endif
