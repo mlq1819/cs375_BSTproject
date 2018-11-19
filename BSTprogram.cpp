@@ -69,7 +69,7 @@ cout << "Entered into main: " << argc << " arguments" << endl;
 	ofstream ofp;
 	ofp.open(argv[2]);
 	if(!ofp.is_open() || !ifp.good()){
-		cout << "bad Output File Name: \"" << argv[2] << "\"" << endl;
+		cout << "Bad Output File Name: \"" << argv[2] << "\"" << endl;
 		return 1;
 	}
 	vector<int> nums = vector<int>();
