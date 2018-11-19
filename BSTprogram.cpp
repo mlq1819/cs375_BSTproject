@@ -138,9 +138,9 @@ cout << "Starting clock for Insert..." << endl;
 		}
 		end_time=clock();				//End Timer Phase - Insert
 		average = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000/nums.size());
-		ofp << argv[argno] << ": Insert\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
+		ofp << argv[argno] << ": Insert\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
 #if DEBUG
-cout << "Ended clock for "<< argv[argno] << ": Insert\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
+cout << "Ended clock for "<< argv[argno] << ": Insert\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
 cout << "starting clock for Search..." << endl;
 #endif
 		max_diff=0;
@@ -153,9 +153,9 @@ cout << "starting clock for Search..." << endl;
 		}
 		end_time=clock();				//End Timer Phase - Search
 		average = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000/nums.size());
-		ofp << argv[argno] << ": Search\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
+		ofp << argv[argno] << ": Search\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
 #if DEBUG
-cout << "Ended clock for "<< argv[argno] << ": Search\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
+cout << "Ended clock for "<< argv[argno] << ": Search\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
 cout << "starting clock for Delete..." << endl;
 #endif
 		max_diff=0;
@@ -168,9 +168,9 @@ cout << "starting clock for Delete..." << endl;
 		}
 		end_time=clock();				//End Timer Phase - Delete
 		average = (unsigned long) (((double)(end_time-start_time))/CLOCKS_PER_SEC*1000/nums.size());
-		ofp << argv[argno] << ": Delete\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
+		ofp << argv[argno] << ": Delete\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
 #if DEBUG
-cout << "Ended clock for "<< argv[argno] << ": Delete\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << endl;
+cout << "Ended clock for "<< argv[argno] << ": Delete\n\tAverage: " << average << " milliseconds\n\tWorst: " << max_diff << " milliseconds" << endl;
 cout << "Finished with " << argv[argno] << "!" << endl;
 #endif
 	}
